@@ -43,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/rosie": "^0.0.40",
+    "@types/styled-components": "^5.1.25",
+    "rosie": "^2.1.0"
   }
 }
