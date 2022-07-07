@@ -1,4 +1,5 @@
 import { Label, Input } from "../GenderForm/styles";
+import { Message } from "../Message";
 import { IFormGroup } from "./form-group";
 
 export function FormGroup(props: IFormGroup | any) {
@@ -24,7 +25,9 @@ export function FormGroup(props: IFormGroup | any) {
         error={!!error}
         {...props}
       />
-      {!!error && <div data-testid="error-message">{error}</div>}
+      {!!error && (
+        <Message data-testid="error-message" message={error} type="error" />
+      )}
     </div>
   );
 }

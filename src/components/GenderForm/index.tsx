@@ -14,7 +14,11 @@ const FormValidationScheme = Yup.object().shape({
   }),
 });
 
-export function GenderForm() {
+export interface IGenderForm {
+  onSubmit: (formControls: IFormControls) => void;
+}
+
+export function GenderForm({ onSubmit }: IGenderForm) {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -25,9 +29,7 @@ export function GenderForm() {
     },
     validationSchema: FormValidationScheme,
     validateOnChange: true,
-    onSubmit: (e: IFormControls) => {
-      // call the api
-    },
+    onSubmit,
   });
 
   const genderFields: { [key: string]: string } = {
@@ -47,19 +49,23 @@ export function GenderForm() {
   };
 
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit} data-testid="gender-form">
       <FormGroup
         label="Name"
         name="name"
+        id="name"
+        data-testid="name"
         value={formik.values.name}
         handleChange={formik.handleChange}
         error={formik.errors.name}
       />
 
       <div>
-        <Label htmlFor="gender">Genders</Label>
+        <Label htmlFor="gender">Gender</Label>
         <Select
           name="gender"
+          id="gender"
+          data-testid="gender"
           value={formik.values.gender}
           onChange={handleSelectChange}
         >
@@ -76,6 +82,7 @@ export function GenderForm() {
           type="text"
           name="favorite-singer"
           value={formik.values["favorite-singer"]}
+          data-testid="favorite-singer"
           handleChange={formik.handleChange}
         />
       )}
@@ -86,6 +93,7 @@ export function GenderForm() {
           type="text"
           name="favorite-book"
           value={formik.values["favorite-book"]}
+          data-testid="favorite-book"
           handleChange={formik.handleChange}
         />
       )}
@@ -96,6 +104,7 @@ export function GenderForm() {
           type="text"
           name="favorite-book"
           value={formik.values["favorite-book"]}
+          data-testid="favorite-sport"
           handleChange={formik.handleChange}
         />
       )}
