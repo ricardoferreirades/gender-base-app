@@ -1,9 +1,12 @@
 import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
+import { Button } from "../Button";
 import { FormGroup } from "../FormGroup";
+import { Label } from "../Label";
+import { Select } from "../Select";
 import { GenderTypes, IFormControls } from "./gender-form";
-import { Button, Label, Select, Form } from "./styles";
+import { Form } from "./styles";
 
 const FormValidationScheme = Yup.object().shape({
   name: Yup.string().min(2, "Too short").max(30, "Too long"),

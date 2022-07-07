@@ -1,4 +1,5 @@
-import { Label, Input } from "../GenderForm/styles";
+import { Input } from "../Input";
+import { Label } from "../Label";
 import { Message } from "../Message";
 import { IFormGroup } from "./form-group";
 
