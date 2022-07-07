@@ -47,6 +47,7 @@
   "devDependencies": {
     "@types/rosie": "^0.0.40",
     "@types/styled-components": "^5.1.25",
+    "miragejs": "^0.1.45",
     "rosie": "^2.1.0"
   }
 }
