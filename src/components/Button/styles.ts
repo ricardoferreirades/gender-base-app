@@ -13,7 +13,6 @@ export const ButtonContainer = styled.button<{ disabled: boolean }>`
     if (disabled) {
       return css`
         opacity: 0.5;
-        background: red;
         cursor: not-allowed;
       `;
     }
