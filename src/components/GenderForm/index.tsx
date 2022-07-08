@@ -10,11 +10,6 @@ import { Form } from "./styles";
 
 const FormValidationScheme = Yup.object().shape({
   name: Yup.string().min(2, "Too short").max(30, "Too long"),
-  genders: Yup.string(),
-  "favorite-book": Yup.string().default("").when("genders", {
-    is: "male",
-    then: Yup.string(),
-  }),
 });
 export interface IGenderForm {
   onSubmit: (formControls: IFormControls) => void;
@@ -41,6 +36,10 @@ export function GenderForm({ onSubmit, reset }: IGenderForm) {
     "non-binary": "favorite-sport",
   };
 
+  /**
+   * it handles the select change individually to force the not related fields to clean up
+   * @param e : the targeted select element
+   */
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const gender: GenderTypes = e.target.value as GenderTypes;
 
@@ -51,6 +50,7 @@ export function GenderForm({ onSubmit, reset }: IGenderForm) {
     formik.setValues({ ...formik.values, ...resetObject, gender });
   };
 
+  // validates the form based on the name, gender, and favorite fields
   const isFormValid = () =>
     !!formik.values.name &&
     !formik.errors.name &&
@@ -58,6 +58,7 @@ export function GenderForm({ onSubmit, reset }: IGenderForm) {
       !!formik.values["favorite-book"] ||
       !!formik.values["favorite-sport"]);
 
+  // it resets the form whenever the reset property is set to true
   useEffect(() => {
     if (reset) {
       formik.resetForm();
