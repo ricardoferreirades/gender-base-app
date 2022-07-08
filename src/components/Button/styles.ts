@@ -6,7 +6,7 @@ export const ButtonContainer = styled.button<{ disabled: boolean }>`
   padding: 0.5rem 1rem;
   cursor: pointer;
   margin-top: 0.5rem;
-  background-color: #0496ff;
+  background-color: var(--blue);
   transition: all 0.3 ease;
 
   ${({ disabled }) => {
