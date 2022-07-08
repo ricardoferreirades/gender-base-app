@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { MessageContainer } from "./styles";
 
 export type MessageType = "success" | "error" | "default";
@@ -6,5 +7,26 @@ export interface IMessage {
   type?: MessageType | undefined;
 }
 export function Message({ message, type = "success" }: IMessage) {
-  return <MessageContainer type={type}>{message}</MessageContainer>;
+  const [visiblity, setVisibility] = useState(false);
+
+  useEffect(() => {
+    setVisibility(!!message);
+  }, [message]);
+
+  const handleClose = () => {
+    setVisibility(false);
+  };
+
+  return (
+    <>
+      {visiblity && (
+        <MessageContainer type={type}>
+          <span className="text">{message}</span>
+          <span className="close" onClick={handleClose}>
+            X
+          </span>
+        </MessageContainer>
+      )}
+    </>
+  );
 }
