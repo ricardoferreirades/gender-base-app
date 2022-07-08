@@ -1,12 +1,21 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ButtonContainer = styled.button<{ disabled: boolean }>`
   color: white;
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  background: #0496ff;
   margin-top: 0.5rem;
-  opacity: ${(disabled) => (disabled ? 0.5 : 1)};
-  cursor: ${(disabled) => (disabled ? "not-allowed" : "pointer")};
+  background-color: #0496ff;
+  transition: all 0.3 ease;
+
+  ${({ disabled }) => {
+    if (disabled) {
+      return css`
+        opacity: 0.5;
+        background: red;
+        cursor: not-allowed;
+      `;
+    }
+  }}
 `;

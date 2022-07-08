@@ -1,3 +1,4 @@
+import { fork } from "child_process";
 import { useFormik } from "formik";
 import React from "react";
 import * as Yup from "yup";
@@ -50,6 +51,13 @@ export function GenderForm({ onSubmit }: IGenderForm) {
 
     formik.setValues({ ...formik.values, ...resetObject, gender });
   };
+
+  const isFormValid = () =>
+    !!formik.values.name &&
+    !formik.errors.name &&
+    (!!formik.values["favorite-singer"] ||
+      !!formik.values["favorite-book"] ||
+      !!formik.values["favorite-sport"]);
 
   return (
     <Form onSubmit={formik.handleSubmit} data-testid="gender-form">
@@ -111,9 +119,16 @@ export function GenderForm({ onSubmit }: IGenderForm) {
           handleChange={formik.handleChange}
         />
       )}
-      <Button type="submit" disabled={true}>
-        Send
-      </Button>
+
+      {isFormValid() ? (
+        <Button type="submit" disabled={false}>
+          Send
+        </Button>
+      ) : (
+        <Button type="submit" disabled={true}>
+          Send
+        </Button>
+      )}
     </Form>
   );
 }
