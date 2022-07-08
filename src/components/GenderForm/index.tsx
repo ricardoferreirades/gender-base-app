@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import * as Yup from "yup";
 import { Button } from "../Button";
 import { FormGroup } from "../FormGroup";
@@ -16,12 +16,12 @@ const FormValidationScheme = Yup.object().shape({
     then: Yup.string(),
   }),
 });
-
 export interface IGenderForm {
   onSubmit: (formControls: IFormControls) => void;
+  reset?: boolean;
 }
 
-export function GenderForm({ onSubmit }: IGenderForm) {
+export function GenderForm({ onSubmit, reset }: IGenderForm) {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -57,6 +57,12 @@ export function GenderForm({ onSubmit }: IGenderForm) {
     (!!formik.values["favorite-singer"] ||
       !!formik.values["favorite-book"] ||
       !!formik.values["favorite-sport"]);
+
+  useEffect(() => {
+    if (reset) {
+      formik.resetForm();
+    }
+  }, [reset]);
 
   return (
     <Form onSubmit={formik.handleSubmit} data-testid="gender-form">
