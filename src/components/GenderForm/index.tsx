@@ -118,8 +118,8 @@ export function GenderForm({ onSubmit, reset }: IGenderForm) {
           id="favorite-sport"
           label="Favorite Sport"
           type="text"
-          name="favorite-book"
-          value={formik.values["favorite-book"]}
+          name="favorite-sport"
+          value={formik.values["favorite-sport"]}
           data-testid="favorite-sport"
           handleChange={formik.handleChange}
         />
