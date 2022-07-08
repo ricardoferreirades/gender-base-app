@@ -2,6 +2,7 @@ import { GenderForm } from "./components/GenderForm";
 import { IFormControls } from "./components/GenderForm/gender-form";
 import { Message } from "./components/Message";
 import { useHttpPost } from "./services/api/useHttpPost";
+import "./style.css";
 
 function App() {
   const { method, response, statusText, statusType } = useHttpPost("/api/data");
