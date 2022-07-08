@@ -111,7 +111,9 @@ export function GenderForm({ onSubmit }: IGenderForm) {
           handleChange={formik.handleChange}
         />
       )}
-      <Button type="submit">Send</Button>
+      <Button type="submit" disabled={true}>
+        Send
+      </Button>
     </Form>
   );
 }
