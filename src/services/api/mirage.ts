@@ -12,6 +12,7 @@ export function makeServer(environment: environmentType = "testing") {
 
     routes() {
       this.namespace = "api";
+      this.get("/data");
       this.post("/data", (schema, request) => {
         const showError = Math.round(Math.random() * 10) > 5;
 
