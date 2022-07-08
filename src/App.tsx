@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { GenderForm } from "./components/GenderForm";
 import { IFormControls } from "./components/GenderForm/gender-form";
 import { Message } from "./components/Message";
-import { useHttpGet, useHttpPost } from "./services/api/useHttpPost";
+import { useHttpGet } from "./services/api/useHttpGet";
+import { useHttpPost } from "./services/api/useHttpPost";
 import { GlobalStyle } from "./styles/global";
 
 function App() {
